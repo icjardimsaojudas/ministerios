@@ -494,7 +494,7 @@
     <!-- Header text -->
     <div class="hero-logo">
       <p class="logo-main">Igreja da Cidade — Jd. São Judas</p>
-      <p class="logo-sub">Base de Missões</p>
+      <p class="logo-sub">Ministérios</p>
     </div>
 
     <p class="hero-eyebrow">Cadastro de Voluntário</p>
@@ -707,7 +707,7 @@
   <div class="footer-bar">
     <span>Igreja da Cidade</span>
     <div class="dot"></div>
-    <span>Base de Missões IC Jd São Judas 2026</span>
+    <span>Ministérios IC Jd São Judas 2026</span>
   </div>
 
   <script>
@@ -880,7 +880,7 @@
         nome:          nome.value.trim(),
         dataNascimento: dataNasc.value,
         whatsapp:      whatsapp.value.trim(),
-        ministerios:   escolhidos.map(e => e.label).join(' | '),
+        ministerios:   escolhidos.map(e => e.label).join('\n'),
         liderGDC:      liderVal,
         nomeLiderGDC:  liderVal === "Não" ? nomeLider.value.trim() : "",
         membro:        membroVal,
