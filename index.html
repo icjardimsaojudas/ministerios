@@ -429,6 +429,8 @@
         <button type="button" class="base-tab" onclick="selectBase('servico')">Serviço</button>
         <button type="button" class="base-tab" onclick="selectBase('adoracao')">Adoração</button>
         <button type="button" class="base-tab" onclick="selectBase('missoes')">Missões</button>
+        <button type="button" class="base-tab" onclick="selectBase('faixaetaria')">Faixa Etária</button>
+        <button type="button" class="base-tab" onclick="selectBase('celebracoes')">Celebrações</button>
       </div>
 
       <!-- Ministerios por base -->
@@ -515,6 +517,24 @@
             <button type="button" class="min-btn" onclick="addMin('Missões — Evangelismo')">Evangelismo</button>
           </div>
         </div>
+
+        <div class="ministerio-list" id="min-faixaetaria" style="display:none">
+          <p class="min-hint">Clique em um ministério para adicionar:</p>
+          <div class="min-grid">
+            <button type="button" class="min-btn" onclick="addMin('Faixa Etária — Ignição (2 a 12 anos)')">Ignição (2 a 12 anos)</button>
+            <button type="button" class="min-btn" onclick="addMin('Faixa Etária — Eleve (13 a 35 anos)')">Eleve (13 a 35 anos)</button>
+          </div>
+        </div>
+
+        <div class="ministerio-list" id="min-celebracoes" style="display:none">
+          <p class="min-hint">Clique em um ministério para adicionar:</p>
+          <div class="min-grid">
+            <button type="button" class="min-btn" onclick="addMin('Celebrações — Feminina')">Feminina</button>
+            <button type="button" class="min-btn" onclick="addMin('Celebrações — Homens de Honra')">Homens de Honra</button>
+            <button type="button" class="min-btn" onclick="addMin('Celebrações — Vigília')">Vigília</button>
+            <button type="button" class="min-btn" onclick="addMin('Celebrações — Campanha da Vitória')">Campanha da Vitória</button>
+          </div>
+        </div>
       </div>
 
       <!-- Chosen ministries box -->
@@ -558,6 +578,9 @@
       <div id="campo-neklesia" class="campo-condicional">
         <label style="margin-top:12px;">N Eklésia <span class="required-star">*</span></label>
         <input type="text" id="nEklesia" placeholder="Seu número Eklésia" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')">
+
+        <label style="margin-top:12px;">De qual IC você é membro? <span class="required-star">*</span></label>
+        <input type="text" id="qualIC" placeholder="Ex: IC Jd. São Judas, IC Centro...">
       </div>
     </div>
 
@@ -733,6 +756,7 @@
       const nomeLider     = document.getElementById("nomeLiderGDC");
       const membroChecked = document.querySelector('input[name="membro"]:checked');
       const nEklesia      = document.getElementById("nEklesia");
+      const qualIC        = document.getElementById("qualIC");
       const batizChecked  = document.querySelector('input[name="batizado"]:checked');
       const anoBatismo    = document.getElementById("anoBatismo");
 
@@ -757,6 +781,7 @@
 
       if (liderVal === "Não" && !nomeLider.value.trim()) { markInvalid(nomeLider); valid = false; }
       if (membroVal === "Sim" && !nEklesia.value.trim()) { markInvalid(nEklesia); valid = false; }
+      if (membroVal === "Sim" && !qualIC.value.trim())   { markInvalid(qualIC); valid = false; }
       if (batizVal === "Sim" && !anoBatismo.value)       { markInvalid(anoBatismo); valid = false; }
 
       if (!valid) {
@@ -779,6 +804,7 @@
         nomeLiderGDC:  liderVal === "Não" ? nomeLider.value.trim() : "",
         membro:        membroVal,
         nEklesia:      membroVal === "Sim" ? nEklesia.value.trim() : "",
+        qualIC:        membroVal === "Sim" ? qualIC.value.trim() : "",
         batizado:      batizVal,
         anoBatismo:    batizVal === "Sim" ? anoBatismo.value : ""
       };
